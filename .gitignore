@@ -1,0 +1,32 @@
+# 忽略 macOS 系统文件
+.DS_Store
+
+# 忽略 Python 虚拟环境
+.venv/
+venv/
+
+# 忽略 pyc 文件和缓存
+__pycache__/
+*.pyc
+
+# 忽略 IDE 配置
+.idea/
+*.iml
+
+# 忽略日志和临时文件
+*.log
+*.tmp
+
+# 忽略 node_modules
+node_modules/
+
+# 忽略打包文件
+dist/
+build/
+
+# 忽略环境配置文件
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
