@@ -1,6 +1,7 @@
 import netifaces
 import socket
 import yaml
+import subprocess
 
 def is_public_ipv6(ip):
     # 排除 ULA（fc00::/7）、回环、链路本地
@@ -51,4 +52,16 @@ if ipv6_list:
     print(f"已将 {ipv6_list[0]} 更新到 ipv6_addresses.yml 的 workstation ip 字段")
 else:
     print("未找到可用的IPv6地址")
+
+def git_commit_and_push():
+    status = subprocess.getoutput('git status --porcelain')
+    if status.strip():
+        subprocess.run(['git', 'add', '.'])
+        subprocess.run(['git', 'commit', '-m', '自动检测并更新IPv6地址到yml'])
+        subprocess.run(['git', 'push'])
+        print('已提交并推送更改到远程仓库')
+    else:
+        print('没有需要提交的更改')
+
+git_commit_and_push()
 
